@@ -1,0 +1,38 @@
+import java.util.*;
+public static void main(String args[]){
+//trainTicket tt=new trainTicket();
+testTicket t=new testTicket();
+Scanner sc=new Scanner(System.in);
+int tnum;
+String src;
+String des;
+class testTicket{
+testTicket(int n,String s,String d){
+tnum=n;
+src=s;
+des=d;
+}
+public int getnum(){
+return sc.nextInt();
+}
+public String getsrc(){
+return src;
+}
+public String getdes(){
+return des;
+}
+//int a=tt.getdata();
+//System.out.println(a);
+System.out.println("Train num: "+t.getnum()+"Source: "+t.getsrc()+"Destination: "+t.getdes());
+}
+}
+
+
+
+
+/*class trainTicket{
+public int getdata(){
+Scanner sc=new Scanner(System.in);
+return sc.nextInt();
+}
+}*/
