@@ -1,0 +1,47 @@
+class Sub{
+    public int subnum(Loan l){
+        if(l instanceof gLoan){
+            gLoan g=(gLoan)l;
+            return g.subs();
+        }
+        else{
+            mLoan m=(mLoan)l;
+            return m.sub();
+        }
+    }
+}
+abstract class Loan{
+    private int num;
+    public Loan(int a){
+        num=a;
+    }
+    public int getNum(){
+        return num;
+    }
+}
+class gLoan extends Loan{
+    public gLoan(int a){
+        super(a);
+    }
+    public int subs(){
+        return this.getNum()+10;
+    }
+}
+class mLoan extends Loan{
+    public mLoan(int a){
+        super(a);
+    }
+    public int sub(){
+        return this.getNum()+100;
+    }
+}
+class Main{
+    public static void main(String args[]){
+        gLoan g=new gLoan(2);
+       // System.out.println(g.getNum());
+        mLoan t=new mLoan(2);
+        //System.out.println(t.getNum());
+        Sub s=new Sub();
+        System.out.println(s.subnum(t));
+    }
+}
