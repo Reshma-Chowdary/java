@@ -1,157 +1,157 @@
 <html>
- 2 
- 
-    <body>
- 3 
- 
-        <center><u><h1>Ticket Booking</h1></u></center>
- 4 
- 
-        <form><center>
- 5 
- 
-            <b>From :</b>
- 6 
- 
-            <select id="start" name="source" style=margin-right:100px>
- 7 
- 
-                <option value="" selected disabled>Source</option>
- 8 
- 
-                <option value="vzm">Vizianagarm</option>
- 9 
- 
-                <option value="vskp">Vishakahapatnam</option>
- 10 
- 
-                <option value="sklm">Srikakulam</option>
- 11 
- 
-            </select>
- 12 
- 
-            <b>To :</b> 
- 13 
- 
-            <select id="start" name="Destination" >
- 14 
- 
-                <option value="" selected disabled>Destination</option>
- 15 
- 
-                <option value="vzm">Vizianagarm</option>
- 16 
- 
-                <option value="vskp">Vishakahapatnam</option>
- 17 
- 
-                <option value="sklm">Srikakulam</option>
- 18 
- 
-            </select>
- 19 
- 
-        <br><br>
- 20 
- 
-            <b>Train Name : </b>
- 21 
- 
-            <select id="start" name="Train" >
- 22 
- 
-                <option value="" selected disabled>Select Train Name</option>
- 23 
- 
-                <option value="jbm">Janmabhoomi Express</option>
- 24 
- 
-                <option value="rgd">Rayagada Passenger</option>
- 25 
- 
-                <option value="yst">Yesvantpur Express </option>
- 26 
- 
-            </select>
- 27 
- 
-        <br><br>
- 28 
- 
-            <b>Class: </b>
- 29 
- 
-            <select id="class"  style=margin-right:100px>
- 30 
- 
-                <option value="" selected disabled>Select class</option>
- 31 
- 
-                <option value="1ac">1AC</option>
- 32 
- 
-                <option value="2ac">2AC</option>
- 33 
- 
-                <option value="3ac">3AC</option>
- 34 
- 
-                <option value="sl">SL</option>
- 35 
- 
-            </select>
- 36 
- 
-            <b>Date :</b> 
- 37 
- 
-            <input type="date">
- 38 
- 
-        <br>
- 39 
- 
-        <table style="margin: 20px; border-collapse: collapse; width: 40%;">
- 40 
- 
-            <tr>
- 41 
- 
-            <td><b>Passengers</b></td>
- 42 
- 
-            </tr>
- 43 
- 
-            <tr>
- 44 
- 
-            <th>sno</th>
- 45 
- 
-            <th>name</th>
- 46 
- 
-            <th>gender</th>
- 47 
- 
-            <th>age</th>
- 48 
- 
-            </tr>
- 49 
- 
-        </table>
- 50 
- 
-    </center>
- 51 
- 
-    </form>
- 52 
- 
-    </body>
- 53 
- 
+<head>
+	<style>
+		table{
+		width:500px;
+		height: 100px;
+		}
+		table,th,td{
+			border:2px solid black;
+			border-collapse:collapse;
+		}
+	</style>
+</head>
+	<body>
+		<center><u><h1>Ticket Booking</h1></u></center>
+		<form><center>
+			<b>From :</b>
+			<select id="start" name="source" style=margin-right:100px>
+				<option value="" selected disabled>Source</option>
+				<option value="vzm">Vizianagarm</option>
+				<option value="vskp">Vishakahapatnam</option>
+				<option value="sklm">Srikakulam</option>
+			</select>
+			<b>To :</b> 
+			<select id="start" name="Destination" >
+				<option value="" selected disabled>Destination</option>
+				<option value="vzm">Vizianagarm</option>
+				<option value="vskp">Vishakahapatnam</option>
+				<option value="sklm">Srikakulam</option>
+			</select>
+			<br><br>
+			<b>Train Name : </b>
+			<select id="start" name="Train" >
+				<option value="" selected disabled>Select Train Name</option>
+				<option value="jbm">Janmabhoomi Express</option>
+				<option value="rgd">Rayagada Passenger</option>
+				<option value="yst">Yesvantpur Express </option>
+			</select>
+			<br><br>
+			<b>Class: </b>
+			<select id="class"  style=margin-right:100px>
+				<option value="" selected disabled>Select class</option>
+				<option value="1ac">1AC</option>
+				<option value="2ac">2AC</option>
+				<option value="3ac">3AC</option>
+				<option value="sl">SL</option>
+			</select>
+			<b>Date :</b> 
+			<input type="date">
+			<br><br>
+			<b><u>Passengers</u></b><br>
+			<table id="tab" >
+			<tr>
+				<th>sno</th>
+				<th>name</th>	
+				<th>gender</th>
+				<th>age</th>
+			</tr>
+			<tr>
+				<td><input type="text"></td>
+				<td><input type="text"></td>	
+				<td>
+					<select>
+						<option value="" selected disabled></option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select>
+				</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td><input type="text"></td>
+				<td><input type="text"></td>	
+				<td>
+					<select>
+						<option value="" selected disabled></option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select>
+				</td>
+				<td><input type="text"></td>
+			</tr>
+			</table>
+		</center><br>
+		<button type="button" style=margin-left:900px onclick="add()">Add</button><br><br>
+		<button type="button" style=margin-left:600px >Submit</button>
+		<button type="button" style=margin-left:100px >Clear</button>
+	</form>
+	<script>
+	function add(){
+		var table=document.getElementById("tab");
+		var row=table.insertRow("tr");
+		var cell1=document.createElement("td");		
+		var cell2=document.createElement("td");	
+		var cell3=document.createElement("td");	
+		var cell4=document.createElement("td");	
+
+		var in1=document.createElement("input");
+		in1.type="text";
+
+		var in2=document.createElement("input");
+		in2.type="text";
+
+		var in3=document.createElement("input");
+		in3.type="text";
+
+		var in4=document.createElement("input");
+		in4.type="text";
+
+		cell1.appendChild(in1);
+		cell2.appendChild(in2);
+		cell3.appendChild(in3);
+		cell4.appendChild(in4);
+		
+		row.appendChild(cell1);
+		row.appendChild(cell2);
+		row.appendChild(cell3);
+		row.appendChild(cell4);
+		table.appendChild(row);
+	}
+	</script>
+	</body>
 </html>
+
+<!--
+var table=document.getElementById("tab");
+		var row=table.insertRow("tr");
+		var cell1=document.createElement("td");		
+		var cell2=document.createElement("td");	
+		var cell3=document.createElement("td");	
+		var cell4=document.createElement("td");	
+
+		var in1=document.createElement("input");
+		in1.type="text";
+
+		var in2=document.createElement("input");
+		in2.type="text";
+
+		var in3=document.createElement("input");
+		in3.type="text";
+
+		var in4=document.createElement("input");
+		in4.type="text";
+
+		cell1.appendChild(in1);
+		cell2.appendChild(in2);
+		cell3.appendChild(in3);
+		cell4.appendChild(in4);
+		
+		row.appendChild(cell1);
+		row.appendChild(cell2);
+		row.appendChild(cell3);
+		row.appendChild(cell4);
+		table.appendChild(row);
+-->
