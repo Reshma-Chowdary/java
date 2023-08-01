@@ -1,0 +1,316 @@
+<html>
+<head>
+	<style>
+		table{
+		width:500px;
+		height: 100px;
+		}
+		table,td,th{
+			border:2px solid black;
+			border-collapse:collapse;
+		}
+	</style>
+</head>
+	<body>
+		<center><u><h1>Ticket Booking</h1></u></center>
+		<form><center>
+			<b>From :</b>
+			<select id="start" name="source" style=margin-right:100px>
+				<option value="" selected disabled>Source</option>
+				<option value="vzm">Vizianagarm</option>
+				<option value="vskp">Vishakahapatnam</option>
+				<option value="sklm">Srikakulam</option>
+			</select>
+			<b>To :</b> 
+			<select id="start" name="Destination" >
+				<option value="" selected disabled>Destination</option>
+				<option value="vzm">Vizianagarm</option>
+				<option value="vskp">Vishakahapatnam</option>
+				<option value="sklm">Srikakulam</option>
+			</select>
+			<br><br>
+			<b>Train Name : </b>
+			<select id="start" name="Train" >
+				<option value="" selected disabled>Select Train Name</option>
+				<option value="jbm">Janmabhoomi Express</option>
+				<option value="rgd">Rayagada Passenger</option>
+				<option value="yst">Yesvantpur Express </option>
+			</select>
+			<br><br>
+			<b>Class: </b>
+			<select id="class"  style=margin-right:100px>
+				<option value="" selected disabled>Select class</option>
+				<option value="1ac">1AC</option>
+				<option value="2ac">2AC</option>
+				<option value="3ac">3AC</option>
+				<option value="sl">SL</option>
+			</select>
+			<b>Date :</b> 
+			<input type="date">
+			<br><br>
+			<b><u>Passengers</u></b><br>
+			<table id="tab" >
+			<tr>
+				<th>sno</th>
+				<th>name</th>	
+				<th>gender</th>
+				<th>age</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td><input type="text"></td>
+				<td><input type="text"></td>	
+				<td>
+					<select>
+						<option value="" selected disabled>Select</option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select>
+				</td>
+				<td><input type="text"></td>
+				<td><button type="button" onclick="del(this)">Del</button></td>
+			</tr>
+			<tr>
+				<td><input type="text"></td>
+				<td><input type="text"></td>	
+				<td>
+					<select>
+						<option value="" selected disabled>Select</option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select>
+				</td>
+				<td><input type="text"></td>
+				<td><button type="button" onclick="del(this)">Del</button></td>
+			</tr>
+			</table>
+		</center><br>
+		<button type="button" style=margin-left:900px onclick="add()">Add</button><br><br>
+		<button type="button" style=margin-left:600px onclick="submitForm()">Submit</button>
+		<button type="button" style=margin-left:100px onclick="clearForm()">Clear</button><br><br>
+		<center><div id="successMessage" style="display: none; color: green;">Submitted successfully</div></center>
+	</form>
+	<script>
+	function add(tab){
+		var tab = document.getElementById("tab");
+    		var newRow = tab.rows[tab.rows.length - 1].cloneNode(true);
+    		
+		var inputElements = newRow.getElementsByTagName("input");
+    		for (var i = 0; i < inputElements.length; i++) {
+        		inputElements[i].value = "";
+    		}
+
+    		var selectElements = newRow.getElementsByTagName("select");
+    		for (var i = 0; i < selectElements.length; i++) {
+        		selectElements[i].selectedIndex = 0;
+    		}
+
+    tab.appendChild(newRow);
+	}
+	function del(button) {
+		var row = button.parentNode.parentNode;
+    		var tab = document.getElementById("tab");
+    		if (tab.rows.length > 2) {
+        		tab.deleteRow(row.rowIndex);
+    		} else {
+        		alert("At least one row must remain in the table.");
+    		}
+	}
+	function clearForm() {
+    		var tab = document.getElementById("tab");
+
+    		var inputElements = tab.getElementsByTagName("input");
+    		for (var i = 0; i < inputElements.length; i++) {
+        		inputElements[i].value = "";
+    		}
+
+    		var selectElements = tab.getElementsByTagName("select");
+    		for (var i = 0; i < selectElements.length; i++) {
+        		selectElements[i].selectedIndex = 0;
+    		}
+
+		var fromDropdown = document.getElementById("start");
+    		fromDropdown.selectedIndex = 0;
+
+		var toDropdown = document.getElementById("destination");
+    		toDropdown.selectedIndex = 0;
+
+    		var trainDropdown = document.getElementById("train");
+    		trainDropdown.selectedIndex = 0;
+
+    		var classDropdown = document.getElementById("class");
+    		classDropdown.selectedIndex = 0;
+
+    		var dateInput = document.getElementById("dateInput");
+    		dateInput.value = "";
+	}
+	function submitForm() {
+    		var successMessage = document.getElementById("successMessage");
+    		successMessage.style.display = "block";
+	}
+	</script>
+	</body>
+</html>
+
+
+
+<!--
+<html>
+<head>
+	<style>
+		table{
+		width:500px;
+		height: 100px;
+		}
+		table,th,td{
+			border:2px solid black;
+			border-collapse:collapse;
+		}
+	</style>
+</head>
+	<body>
+		<center><u><h1>Ticket Booking</h1></u></center>
+		<form><center>
+			<b>From :</b>
+			<select id="start" name="source" style=margin-right:100px>
+				<option value="" selected disabled>Source</option>
+				<option value="vzm">Vizianagarm</option>
+				<option value="vskp">Vishakahapatnam</option>
+				<option value="sklm">Srikakulam</option>
+			</select>
+			<b>To :</b> 
+			<select id="start" name="Destination" >
+				<option value="" selected disabled>Destination</option>
+				<option value="vzm">Vizianagarm</option>
+				<option value="vskp">Vishakahapatnam</option>
+				<option value="sklm">Srikakulam</option>
+			</select>
+			<br><br>
+			<b>Train Name : </b>
+			<select id="start" name="Train" >
+				<option value="" selected disabled>Select Train Name</option>
+				<option value="jbm">Janmabhoomi Express</option>
+				<option value="rgd">Rayagada Passenger</option>
+				<option value="yst">Yesvantpur Express </option>
+			</select>
+			<br><br>
+			<b>Class: </b>
+			<select id="class"  style=margin-right:100px>
+				<option value="" selected disabled>Select class</option>
+				<option value="1ac">1AC</option>
+				<option value="2ac">2AC</option>
+				<option value="3ac">3AC</option>
+				<option value="sl">SL</option>
+			</select>
+			<b>Date :</b> 
+			<input type="date">
+			<br><br>
+			<b><u>Passengers</u></b><br>
+			<table id="tab" >
+			<tr>
+				<th>sno</th>
+				<th>name</th>	
+				<th>gender</th>
+				<th>age</th>
+			</tr>
+			<tr>
+				<td><input type="text"></td>
+				<td><input type="text"></td>	
+				<td>
+					<select>
+						<option value="" selected disabled></option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select>
+				</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td><input type="text"></td>
+				<td><input type="text"></td>	
+				<td>
+					<select>
+						<option value="" selected disabled></option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select>
+				</td>
+				<td><input type="text"></td>
+			</tr>
+			</table>
+		</center><br>
+		<button type="button" style=margin-left:900px onclick="add()">Add</button><br><br>
+		<button type="button" style=margin-left:600px >Submit</button>
+		<button type="button" style=margin-left:100px >Clear</button>
+	</form>
+	<script>
+	function add(){
+		var table=document.getElementById("tab");
+		var row=table.insertRow("tr");
+		var cell1=document.createElement("td");		
+		var cell2=document.createElement("td");	
+		var cell3=document.createElement("td");	
+		var cell4=document.createElement("td");	
+
+		var in1=document.createElement("input");
+		in1.type="text";
+
+		var in2=document.createElement("input");
+		in2.type="text";
+
+		var in3=document.createElement("input");
+		in3.type="text";
+
+		var in4=document.createElement("input");
+		in4.type="text";
+
+		cell1.appendChild(in1);
+		cell2.appendChild(in2);
+		cell3.appendChild(in3);
+		cell4.appendChild(in4);
+		
+		row.appendChild(cell1);
+		row.appendChild(cell2);
+		row.appendChild(cell3);
+		row.appendChild(cell4);
+		table.appendChild(row);
+	}
+	</script>
+	</body>
+</html>
+
+
+var table=document.getElementById("tab");
+		var row=table.insertRow("tr");
+		var cell1=document.createElement("td");		
+		var cell2=document.createElement("td");	
+		var cell3=document.createElement("td");	
+		var cell4=document.createElement("td");	
+
+		var in1=document.createElement("input");
+		in1.type="text";
+
+		var in2=document.createElement("input");
+		in2.type="text";
+
+		var in3=document.createElement("input");
+		in3.type="text";
+
+		var in4=document.createElement("input");
+		in4.type="text";
+
+		cell1.appendChild(in1);
+		cell2.appendChild(in2);
+		cell3.appendChild(in3);
+		cell4.appendChild(in4);
+		
+		row.appendChild(cell1);
+		row.appendChild(cell2);
+		row.appendChild(cell3);
+		row.appendChild(cell4);
+		table.appendChild(row);
+-->
