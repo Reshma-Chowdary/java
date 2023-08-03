@@ -89,7 +89,8 @@
 		</center><br>
 		<button type="button" style=margin-left:900px onclick="add()">Add</button><br><br>
 		<button type="button" style=margin-left:600px onclick="submitForm()">Submit</button>
-		<button type="button" style=margin-left:100px onclick="clearForm()">Clear</button><br><br>
+		<button>Clear</button>
+		<button>dummyr</button>
 		<center><div id="successMessage" style="display: none; color: green;">Submitted successfully</div></center>
 	</form>
 	<script>
@@ -107,7 +108,7 @@
         		selectElements[i].selectedIndex = 0;
     		}
 
-    tab.appendChild(newRow);
+    		tab.appendChild(newRow);
 	}
 	function del(button) {
 		var row = button.parentNode.parentNode;
@@ -117,34 +118,6 @@
     		} else {
         		alert("At least one row must remain in the table.");
     		}
-	}
-	function clearForm() {
-    		var tab = document.getElementById("tab");
-
-    		var inputElements = tab.getElementsByTagName("input");
-    		for (var i = 0; i < inputElements.length; i++) {
-        		inputElements[i].value = "";
-    		}
-
-    		var selectElements = tab.getElementsByTagName("select");
-    		for (var i = 0; i < selectElements.length; i++) {
-        		selectElements[i].selectedIndex = 0;
-    		}
-
-		var fromDropdown = document.getElementById("start");
-    		fromDropdown.selectedIndex = 0;
-
-		var toDropdown = document.getElementById("destination");
-    		toDropdown.selectedIndex = 0;
-
-    		var trainDropdown = document.getElementById("train");
-    		trainDropdown.selectedIndex = 0;
-
-    		var classDropdown = document.getElementById("class");
-    		classDropdown.selectedIndex = 0;
-
-    		var dateInput = document.getElementById("dateInput");
-    		dateInput.value = "";
 	}
 	function submitForm() {
     		var successMessage = document.getElementById("successMessage");
