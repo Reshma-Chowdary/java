@@ -1,0 +1,77 @@
+//SimpleServlet.java
+
+package Carts;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SimpleServlet extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// write some out to client
+		response.getWriter().write("<HTML>");
+		response.getWriter().write("Welcome to Servlets");
+		response.getWriter().write("</HTML>");
+	}
+
+	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int i = Integer.parseInt(request.getParameter("num1"));
+		int j = Integer.parseInt(request.getParameter("num2"));
+		int k = i + j;
+		PrintWriter obj = response.getWriter();
+		obj.println("result is" + k);
+
+	}
+
+}
+
+//Sample.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="tt/">
+a:<input type="text" name="num1">
+b:<input type="text" name="num2">
+<input type="submit" value="ADD">
+</form>
+</body>
+</html>
+
+//web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>SampleCarts</display-name>
+  <welcome-file-list>
+    <welcome-file>Sample.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <servlet><servlet-name>add
+ </servlet-name>
+ <servlet-class>Carts.SimpleServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>add</servlet-name>
+ <url-pattern>/tt/</url-pattern>
+ </servlet-mapping>
+</web-app>
