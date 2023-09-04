@@ -1,0 +1,48 @@
+select * from appointmentsslotcalendar;
+select * from doctorschedule_bhaskar;
+select * from doctorrange
+
+--procedure
+CREATE OR REPLACE FUNCTION procedure_name(doc_id int)
+RETURNS integer AS
+$$
+DECLARE
+	current_date DATE;
+    weekday int;
+    range VARCHAR(255);                                                                                            
+BEGIN
+	current_date := NOW();
+    SELECT EXTRACT(DOW FROM current_date) AS weekday FROM appointmentsslotcalendar;
+
+	select range into range from doctorrange where doctorid=doc_id; 
+    
+    FOR i IN 1..range LOOP
+        IF NOT EXISTS (SELECT 1 FROM appointmentsslotcalendar WHERE doctorid = doc_id) THEN
+            INSERT INTO appointmentsslotcalendar (slotdoctorid, slotdate,slotfrom,slotto,slotstatus)
+            VALUES (doc_id,current_date, range);
+        END IF;
+    END LOOP;
+    
+END;
+$$ LANGUAGE plpgsql;
+
+--function
+CREATE OR REPLACE FUNCTION check_condition_function(condition_parameter INT)
+RETURNS BOOLEAN AS
+$$
+BEGIN
+    -- Your condition-checking logic here
+    -- For example, checking if condition_parameter is greater than 10
+    RETURN (condition_parameter > 10);
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+
+
+
+DROP FUNCTION IF EXISTS procedure_name(INT);
+
+
