@@ -46,3 +46,78 @@ $$ LANGUAGE plpgsql;
 DROP FUNCTION IF EXISTS procedure_name(INT);
 
 
+-------------------------------------------------------------------------------------------
+
+select * from appointmentsslotcalendar;
+select * from doctorschedule;
+select * from doctorrange;
+
+--procedure
+CREATE OR REPLACE FUNCTION procedure_name(doc_id int)
+RETURNS integer AS
+$$
+DECLARE
+	current_date DATE;
+    weekday int;
+    range VARCHAR(255);                                                                                            
+BEGIN
+	current_date := NOW();
+    SELECT EXTRACT(DOW FROM current_date) AS weekday FROM appointmentsslotcalendar;
+
+	select range into range from doctorrange wh	ere doctorid=doc_id; 
+    
+    FOR i IN 1..range LOOP
+        IF NOT EXISTS (SELECT 1 FROM appointmentsslotcalendar WHERE doctorid = doc_id) THEN
+            INSERT INTO appointmentsslotcalendar (slotdoctorid, slotdate,slotfrom,slotto,slotstatus)
+            VALUES (doc_id,current_date, range);
+        END IF;
+    END LOOP;
+    
+END;
+$$ LANGUAGE plpgsql;
+
+--function
+CREATE OR REPLACE FUNCTION check_condition_function(condition_parameter INT)
+RETURNS BOOLEAN AS
+$$
+BEGIN
+    -- Your condition-checking logic here
+    -- For example, checking if condition_parameter is greater than 10
+    RETURN (condition_parameter > 10);
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+select * from doctorschedule where doct_id=1;
+SELECT *
+FROM doctorschedule
+WHERE dcsc_schedule LIKE '%3%';
+
+CREATE OR REPLACE FUNCTION slots_per_day(doc_id INT, date DATE)
+RETURNS INT AS $$
+DECLARE
+    day INT;
+    slot_count INT;
+BEGIN
+    day := EXTRACT(DOW FROM date); 
+    
+    PERFORM  COUNT(*)
+    FROM doctorschedule
+    WHERE doct_id = doc_id
+      AND dcsc_schedule LIKE '%' || day || '%';
+    
+    RETURN slot_count;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT slots_per_day(1, '2023-09-05'::date) AS slot_count;
+drop function slots_per_day
+
+
+insert into doctorschedule values(1,4,'123','05:00:00','05:00:00','05:00:00')
+
+DROP FUNCTION IF EXISTS procedure_name(INT);
+
