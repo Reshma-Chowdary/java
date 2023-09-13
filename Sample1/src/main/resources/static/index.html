@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<center>
+		<br>
+		<h2>
+			<u>Employee CRUD(MVC)</u>
+		</h2>
+		<br> <label>Name :<input type="text" id="name"></label><br>
+		<br> <label>enum :<input type="text" id="enum"></label><br>
+		<br> <label>sal :<input type="text" id="sal"></label><br>
+		<br> <label>job :<input type="text" id="job"></label><br>
+		<br> <label>dept :<input type="text" id="dept"></label><br>
+		<br> <br>
+		<p id="p"></p>
+		<button id="first" onclick="First()">First</button>
+		<button id="last" onclick="Last()">Last</button>
+		<button id="next" onclick="Next()">Next</button>
+		<button id="Prev" onclick="Prev()">Previous</button>
+		<br> <br>
+		<button id="Add" onclick="Add()">Add</button>
+		<button id="Del" onclick="Del()">Delete</button>
+		<button id="edit" onclick="Edit()">Edit</button>
+		<button id="save" onclick="Save()">Save</button>
+		<br> <br>
+		<button id="show" onclick="show()">All Employees</button>
+		<button id="clear" onclick="Clear()">Clear</button>
+		<button id="exit" onclick="Exit()">Exit</button>
+		<br> <br>
+		<table id="table" border="1px">
+			
+		</table>
+		<div id="tnq"></div>
+	</center>
+	<script type="text/javascript">
+		function Add(){
+			var x=new XMLHttpRequest();
+			var empData = {
+					empNo: document.getElementById("enum").value,
+					name: document.getElementById("name").value,
+					deptNo: document.getElementById("dept").value,
+					salary: document.getElementById("sal").value,
+					job: document.getElementById("job").value
+
+				};
+			var jsonData = JSON.stringify(empData);
+			
+			x.open('POST','/employees',true);
+			x.setRequestHeader("Content-Type", "application/json");
+			x.onreadystatechange=function(){
+				if( x.readyState===4){
+					var res=x.responseText;
+				}
+			}
+			x.send(jsonData);
+		}
+		function show(){
+			var x=new XMLHttpRequest();
+			x.open('GET','/employees',true);
+			x.onreadystatechange=function(){
+				if( x.readyState===4 && x.status===200){
+					var res=JSON.parse(x.responseText);
+					var table= document.getElementById("list");
+					table.innerHTML=``;
+					var tablebody= document.createElement("tbody");
+					var tablehead= document.createElement("thead");
+					var headers= document.createElement("th");
+					var row= document.createElement("tr");
+					var body = document.createElement('tb');
+				}
+			}
+		}
+	</script>
+</body>
+</html>
